@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>B2B V2.0</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script src="{{url_for('static', filename='getresults.js')}}"></script>
+    <script src="{{url_for('static', filename='buttons.js')}}"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/9c04498f1b.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="icon" href="{{url_for('static', filename='b2b.png')}}" />
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+  </head>
+  <body>
+
+    <div>
+      <img
+        src="{{url_for('static', filename='banner.svg')}}"
+        alt=""
+        style="
+          height: 50%;
+          width: 100%;
+          background-color: #780116;
+          padding-top: 5px;
+        "
+      />
+    </div>
+    <div class="container-fluid d-flex pt-4">
+      <button
+        class="btn"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasExample"
+        aria-controls="offcanvasExample"
+      >
+        <i class="fa-solid fa-bars fa-2x"></i>
+      </button>
+      <h2 class="ps-xl-5">Факторизација</h2>
+    </div>
+    <div class="container-fluid pb-5">
+      <div
+        class="offcanvas offcanvas-start"
+        tabindex="-1"
+        id="offcanvasExample"
+        aria-labelledby="offcanvasExampleLabel"
+      >
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Задачи</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="offcanvas-body">
+          <div class="list-group">
+            <button
+              type="button"
+              class="list-group-item list-group-item-action"
+              onclick="location.href = `${window.location.protocol}//${window.location.host}/zadaca1/`;"
+              aria-current="true"
+            >
+              Задача 1
+            </button>
+            <button
+              type="button"
+              class="list-group-item list-group-item-action"
+              onclick="location.href = `${window.location.protocol}//${window.location.host}/zadaca2/`;"
+            >
+              Задача 2
+            </button>
+            <button
+              type="button"
+              class="list-group-item list-group-item-action"
+              onclick="location.href = `${window.location.protocol}//${window.location.host}/zadaca3/`;"
+            >
+              Задача 3
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <p>
+          Напишете програма која од стандарден влез ќе прочита еден природен
+          број N, и на стандарден излез ќе ја испечати факторизацијата на тој
+          број. <br /><br />
+          Под факторизација на природен број се подразбира неговото
+          претставување како производ од прости фактори (прост број на степен).
+          Прост број е природен број кој има точно два делители (1 и самиот тој
+          број). Првите неколку прости броеви се 2, 3, 5, 7, 11, 13, 17, итн...
+          <br />
+          Влез <br /><br />
+          Од стандарден влез се чита еден цел број N (2 <= N <= 100000). Излез
+          <br /><br />
+          На стандарден излез отпечатете ја факторизацијата на бројот N.
+          Простите фактори се печатат во загради како број на (^) степен, а се
+          одделени со знакот за множење (*). <br />
+          Факторите треба да се подредени од оној фактор со најмала основа, кон
+          оние со поголема основа. Не смее да има знак * на крајот на излезот.
+          Видете го тест-случајот даден подолу за конкретен пример...
+        </p>
+      </div>
+      <div class="container">
+        <table class="table table-borderless w-50">
+          <thead>
+            <tr>
+              <th scope="col">Input</th>
+              <th scope="col">Output</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1176</th>
+              <td>(2^3)*(3^1)*(7^2)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="container-fluid d-flex justify-content-center p-2">
+      <div class="form-group w-50">
+        <label for="inputcode">Input Code</label>
+        <textarea
+          class="form-control"
+          id="code"
+          rows="10"
+        ></textarea>
+      </div>
+    </div>
+    <div id="results" class="d-flex justify-content-center align-content-center p-3"></div>
+    <div class="container d-flex justify-content-between p-5">
+      <div>
+        <button type="button" class="btn" id="prev" onclick="previousButton()">
+          <i class="fa-solid fa-backward fa-2x"></i>
+        </button>
+        <button type="button" class="btn" id="next" onclick="nextButton()">
+          <i class="fa-solid fa-forward fa-2x"></i>
+        </button>
+      </div>
+      <div class="div">
+        <button type="button" class="btn btn-lg btn-outline-success" onclick="displayDataInTable()">
+          Check Problem
+        </button>
+      </div>
+    </div>
+ 
+  </body>
+</html>

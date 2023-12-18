@@ -1,0 +1,22 @@
+{
+  "input": {
+    "test1": "5 \n100 150 200 250 300",
+    "test2": "7 \n80 120 350 420 480 200 90",
+    "test3": "4 \n300 100 400 50"
+  },
+  "expected": {
+    "test1": "Average price: 200 \n0 0 1 1 1",
+    "test2": "Average price: 248.571 \n0 0 1 1 1 0 0",
+    "test3": "Average price: 212.5 \n1 0 1 0"
+  },
+  "got": {
+    "test1": "Average price: 200 \n0 0 1 1 1",
+    "test2": "Average price: 248.571 \n0 0 1 1 1 0 0",
+    "test3": "Average price: 212.5 \n1 0 1 0"
+  },
+  "is_same": {
+    "test1": "true",
+    "test2": "true",
+    "test3": "false"
+  }
+}
