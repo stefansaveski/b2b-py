@@ -21,12 +21,9 @@ def zadaca2():
 def zadaca3():
     return render_template('zadaca3.html')
 
-
-
 @app.route('/process_code', methods=['POST'])
 def process_code():
     data = request.get_json()
-    print('start')
     return start(data, session["index"], session["name"])
 
 @app.route('/login', methods=['POST'])

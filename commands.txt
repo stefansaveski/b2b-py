@@ -1,0 +1,1 @@
+pkill -f 'gunicorn -w 1 server:app'  -   kill the server
