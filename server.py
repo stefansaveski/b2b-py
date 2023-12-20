@@ -31,6 +31,10 @@ def zadaca2():
 def zadaca3():
     return render_template('zadaca3.html')
 
+@app.route('/quizend/')
+def quizend():
+    return render_template('quizend.html')
+
 @app.route('/process_code', methods=['POST'])
 def process_code():
     data = request.get_json()
