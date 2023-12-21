@@ -8,13 +8,7 @@ app.secret_key = "B2BWEB"
 
 @app.route('/')
 def index():
-    if "index_redirected" in session:
-        return render_template('zadaca1.html')
-    elif "index" in session:
-        session["index_redirected"] = True
-        return redirect(url_for('zadaca1'))
-    else:
-        return render_template('index.html')
+    return render_template('index.html')
 
 @app.route('/zadaca1/')
 def zadaca1():
@@ -25,6 +19,7 @@ def zadaca1():
 
 @app.route('/zadaca2/')
 def zadaca2():
+    print(session["index"])
     return render_template('zadaca2.html')
 
 @app.route('/zadaca3/')
@@ -40,16 +35,19 @@ def process_code():
     data = request.get_json()
     now = datetime.now()
     current_time = now.strftime("%H:%M:%S")
-    return start(data, session["index"], session["name"], session['start_time'], current_time)
+    print(data)
+    if 'index' in session:
+        return start(data, session["index"], session["name"], session['start_time'], current_time)
+    else:
+        # Handle the case where 'index' is not present in the session
+        return {"input": ' ', "expected": ' ',"got": ' ', "is_same": ' ', "correct": ' ', "CompilationError": 'Server error try again'}
 
 @app.route('/login', methods=['POST'])
 def login():
-    if "index" in session:
-        return redirect(url_for('zadaca1'))
     data = request.get_json()
     print(data)
     session["index"] = data.get("jsonData", {}).get("index", '')
-    session["name"] = str(data.get("jsonData", {}).get("name", '')) + " " + str(data.get("surname", ''))
+    session["name"] = str(data.get("jsonData", {}).get("name", '')) + " " + str(data.get("jsonData", {}).get("surname", ''))
     now = datetime.now()
     current_time = now.strftime("%H:%M:%S")
     session['start_time'] = current_time

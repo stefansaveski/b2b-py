@@ -18,7 +18,7 @@ def save_submission_to_json(data):
         trues = 0
         done = True
         for token in tokens.json():
-            subs = "http://192.168.100.18:2358/submissions/" + str(token.get('token', ''))
+            subs = "http://localhost:2358/submissions/" + str(token.get('token', ''))
             # print(token.get('token', ''))
             response = requests.get(subs).json()
             state = response.get("status", { }).get("id", "")

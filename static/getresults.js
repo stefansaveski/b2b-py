@@ -19,6 +19,19 @@ async function saveInfo(){
   }
 }
 
+function checkfields(){
+  var firstName = document.getElementById("firstName").value; 
+  var lastName = document.getElementById("lastName").value; 
+  var index = document.getElementById("indexNumber").value;
+  if(firstName == "" || lastName == "" || index == ""){
+      alert("Fill all the fields!");
+  }
+  else{
+      location.href = `${window.location.protocol}//${window.location.host}/zadaca1`; 
+      saveInfo();
+  } 
+}
+
 async function submitCode() {
   var currentPageName = window.location.pathname.replace(/\/$/, '').split('/').pop();
   const code = document.getElementById('code').value;
@@ -47,7 +60,7 @@ async function displayDataInTable(buttonId) {
   var location = document.getElementById("results");
   location.innerHTML = '<div class="loader"></div>';
   const button = document.getElementById(buttonId);
-  button.disabled = true;
+  //button.disabled = true;
   jsonData = await submitCode();
   const CE = jsonData.CompilationError;
     try {
@@ -59,9 +72,14 @@ async function displayDataInTable(buttonId) {
         location.innerHTML = '<div class="h4" style="color: #780116">Compilation Error</div>';
         return;
       }
-      if(CE == 'Time Limit Exceeded'){
+      else if(CE == 'Time Limit Exceeded'){
         button.disabled = false;
         location.innerHTML = '<div class="h4" style="color: #780116">Time Limit Exceeded</div>';
+        return;
+      }
+      else if(CE == 'Server error try again'){
+        button.disabled = false;
+        location.innerHTML = '<div class="h4" style="color: #780116">Server error try again</div>';
         return;
       }
       var headerRow = table.insertRow();
@@ -116,7 +134,7 @@ async function displayDataInTable(buttonId) {
         resultCell.style.fontWeight = "800";
         resultCell.appendChild(document.createTextNode("Passed all tests!"));
       } else {
-        button.disabled = false;
+        //button.disabled = false;
         var row = table.insertRow();
         var resultCell = row.insertCell();
         resultCell.style.padding = "12px";

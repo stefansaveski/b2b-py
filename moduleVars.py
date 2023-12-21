@@ -91,7 +91,7 @@ async def submision_vars(data):
     expected = api_vars.get(zad, '').get("expected", '')
     input = api_vars.get(zad, '').get("input", '')
     querystring = {"wait":"true"}
-    url = "http://192.168.100.18:2358/submissions/batch"
+    url = "http://localhost:2358/submissions/batch"
     payload = {"submissions": []}
     for i in range(len(input)):
         submission = {

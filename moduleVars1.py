@@ -88,7 +88,7 @@ def submision_vars(data, i, cpp_code, zad):
     expected = api_vars.get(zad, '').get("expected", '')
     input = api_vars.get(zad, '').get("input", '')
     querystring = {"base64_encoded":"false","wait":"true","fields":"stdout,status"}
-    url = "http://192.168.100.18:2358/submissions"
+    url = "http://localhost:2358/submissions"
     payload = {
         "language_id": 52,
         "source_code": cpp_code,
