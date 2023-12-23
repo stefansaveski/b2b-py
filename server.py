@@ -31,7 +31,6 @@ def process_code():
     data = request.get_json()
     now = datetime.now()
     current_time = now.strftime("%H:%M:%S")
-    print(data)
     try:
         return start(data, session["index"], session["name"], session['start_time'], current_time)
     except:
@@ -62,10 +61,8 @@ def get_page():
 def save_page():
     data = request.get_json()
     zadaca = data.get("jsonData", {}).get("zadaca", '')
-    print(data.get("jsonData", {}).get("table", ''))
     session["code"+str(zadaca)] = data.get("jsonData", {}).get("cpp_code", '')
     session["table" + str(zadaca)] = data.get("jsonData", {}).get("table", '')
-    print(session["table"+str(zadaca)])
     return "true"
 
 
