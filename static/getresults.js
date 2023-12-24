@@ -195,7 +195,7 @@ async function displayDataInTable(buttonId) {
 
       let flag = true;
       const keys = Object.keys(jsonData.input);
-      const halfLength = Math.ceil(keys.length /2);
+      const halfLength = Math.ceil(keys.length/2);
       for (let i = 0; i < halfLength; i++) {
         const key = keys[i];
         var row = table.insertRow();
